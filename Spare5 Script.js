@@ -7,6 +7,13 @@
 // @license      MIT - https://tldrlegal.com/license/mit-license
 // @match        http*://app.spare5.com/fives/tasks/beta
 // @match        http*://app.spare5.com/fives/tasks
+// @match        http://app.spare5.com/fives/tasks/328
+// @match        http://app.spare5.com/fives/tasks/563
+// @match        http://app.spare5.com/fives/tasks/829
+// @match        http://app.spare5.com/fives/tasks/1134
+// @match        http://app.spare5.com/fives/tasks/1135
+// @match        http://app.spare5.com/fives/tasks/1169
+// @match        http://app.spare5.com/fives/tasks/1198
 // @grant        none
 // @require      https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js
 // @require      https://gist.githubusercontent.com/kepkin/ff99090c410ab1b5c8fa/raw/a1e229b38cb6eb169556ae9b5e751e5c81d59929/waitForKeyElements.js
