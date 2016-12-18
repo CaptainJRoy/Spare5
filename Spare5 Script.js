@@ -47,6 +47,7 @@ jQuery.noConflict();
     *      }
     *  }
     *
+    *
     *  ALTERNATIVA
     *  window.onload = function() {
     *      //DO STUFF
