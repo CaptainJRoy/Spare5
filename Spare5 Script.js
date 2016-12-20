@@ -13,6 +13,7 @@
 // @match        http://app.spare5.com/fives/tasks/1134
 // @match        http://app.spare5.com/fives/tasks/1135
 // @match        http://app.spare5.com/fives/tasks/1169
+// @match        http://app.spare5.com/fives/tasks/1183
 // @match        http://app.spare5.com/fives/tasks/1198
 // @grant        none
 // @require      https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js
@@ -27,7 +28,7 @@ jQuery.noConflict();
 
 (function($) {
     'use strict';
-    var TASK_TIME = 2;   //TIME IN SECONDS
+    var TASK_TIME = 2.5;   //TIME IN SECONDS
     var ODD = Math.floor((Math.random() * 100) + 1);
     var moneyIn = new Audio('https://www.freesound.org/data/previews/75/75235_778044-lq.mp3');
     moneyIn.volume = 0.2;
@@ -46,7 +47,6 @@ jQuery.noConflict();
     *          //DO STUFF
     *      }
     *  }
-    *
     *
     *  ALTERNATIVA
     *  window.onload = function() {
@@ -106,6 +106,30 @@ jQuery.noConflict();
 
         case 'http://app.spare5.com/fives/tasks/563':
             document.title = 'MENTOR REVIEW';
+            break;
+
+        case 'http://app.spare5.com/fives/tasks/1183':
+            document.title = 'DESCRIBE IMAGE';
+            setTimeout(function() {
+                var link = document.getElementsByTagName('a')[17].firstChild.currentSrc;
+                function prepareFrame(a) {
+                    var iframe = document.createElement("iframe");
+                    iframe.src="https://www.google.com/searchbyimage?site=search&sa=X&image_url=" + a + "&output=embed";
+                    iframe.width="100%";
+                    iframe.height="100%";
+                    iframe.style="visibility:visible";
+                    document.body.appendChild(iframe);
+                }
+                prepareFrame(link);
+
+                document.getElementsByClassName("gbqfb kpbb")[0].form.submit();
+                var toPost = document.getElementsByClassName("_gUb")[0].innerText;
+                window.history.back();
+
+                document.getElementById("job_answers_attributes_0_response").value = toPost;
+                document.getElementsByClassName("question-multiselect-checkbox-label")[0].form.submit();
+                moneyIn.play();
+            }, TASK_TIME * 1000);
             break;
 
         case 'http://app.spare5.com/fives/tasks/328':                       //TESTE CASE
@@ -174,6 +198,12 @@ jQuery.noConflict();
                 }
 
                 toDo = contains(tasks, 829);              // SPORTS REVIEW
+                if(toDo != -1) {
+                    tasks[toDo].click();
+                    return;
+                }
+
+                //toDo = contains(tasks, 1183);              // DESCRIBE IMAGE
                 if(toDo != -1) {
                     tasks[toDo].click();
                     return;

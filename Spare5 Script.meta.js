@@ -13,6 +13,7 @@
 // @match        http://app.spare5.com/fives/tasks/1134
 // @match        http://app.spare5.com/fives/tasks/1135
 // @match        http://app.spare5.com/fives/tasks/1169
+// @match        http://app.spare5.com/fives/tasks/1183
 // @match        http://app.spare5.com/fives/tasks/1198
 // @grant        none
 // @require      https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js
