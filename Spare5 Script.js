@@ -108,7 +108,7 @@ jQuery.noConflict();
         case 'http://app.spare5.com/fives/tasks/1183':
             document.title = 'DESCRIBE IMAGE';
             setTimeout(function() {
-                document.getElementById("job_answers_attributes_0_response").value; // = TEXTO A INTRODUZIR
+                var temp = document.getElementById("job_answers_attributes_0_response").value; // = TEXTO A INTRODUZIR
                 document.getElementsByClassName("question-multiselect-checkbox-label")[0].form.submit();
                 moneyIn.play();
             }, TASK_TIME * 1000);
@@ -132,7 +132,7 @@ jQuery.noConflict();
             // ABRE APENAS NA PAGINA DO GOOGLE IMAGES
             if(location.href.includes("search?tbs=sbi:")) {
                 setTimeout(function() {
-                    document.getElementsByClassName("_gUb")[0].innerText; // TEXTO SOBRE IMAGEM
+                    var temp2 = document.getElementsByClassName("_gUb")[0].innerText; // TEXTO SOBRE IMAGEM
                     window.top.close();
                 }, TASK_TIME * 1000);
                 break;
@@ -192,7 +192,7 @@ jQuery.noConflict();
                     faviconEl.attr('href', favicon)
                         .appendTo('head');
 
-                    if(activeTaskCount > 0) setTimeout(function{
+                    if(activeTaskCount > 0) setTimeout(function() {
                         autoSelect(document.getElementsByClassName("task-item active"));
                     }, TASK_TIME * 1000);
 
