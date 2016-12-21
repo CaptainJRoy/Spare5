@@ -16,10 +16,10 @@
 // @match        http://app.spare5.com/fives/tasks/1169
 // @match        http://app.spare5.com/fives/tasks/1183
 // @match        http://app.spare5.com/fives/tasks/1198
+// @match        http://app.spare5.com/fives/tasks/1206
 // @grant        none
 // @require      https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js
 // @require      https://raw.githubusercontent.com/CaptainJRoy/Spare5/master/waitForKeyElements.js?token=ALAj852QF4EbKa35hcu6ZAt4iimsomnGks5YX-WwwA%3D%3D
-// @require      https://www.gstatic.com/firebasejs/3.6.4/firebase.js
 // @require      https://raw.githubusercontent.com/CaptainJRoy/Spare5/master/autoSelect.js?token=ALAj85e8h5Dy6SmDfi0cUAK10QKSbVZfks5YY_sSwA%3D%3D
 // @run-at       document-start
 // @updateURL    https://raw.githubusercontent.com/CaptainJRoy/Spare5/master/Spare5%20Script.meta.js?token=ALAj82no6gPF7qjrn1C7kKF8HwvNlqz0ks5YX-HewA%3D%3D
@@ -31,7 +31,7 @@ jQuery.noConflict();
 
 (function($) {
     'use strict';
-    var TASK_TIME = 2.5;   //TIME IN SECONDS
+    var TASK_TIME = 2;   //TIME IN SECONDS
     var ODD = Math.floor((Math.random() * 100) + 1);
     var moneyIn = new Audio('https://www.freesound.org/data/previews/75/75235_778044-lq.mp3');
     moneyIn.volume = 0.2;
@@ -53,67 +53,6 @@ jQuery.noConflict();
     */
 
     switch (location.href) {
-        case 'http://app.spare5.com/fives/tasks/1134':                         // CHANGEME
-            document.title = 'ROADMARKINGS';
-            alert("NOT SUPORTED YET");
-            break;
-
-        case 'http://app.spare5.com/fives/tasks/1169':                         //REVIEW
-            alert("CONFIRMAR VALORES DOS INDICES");
-            setTimeout(function() {
-                if(ODD >= 90) document.getElementById( document.getElementsByTagName("input")[9].id ).checked = true;
-                else document.getElementById( document.getElementsByTagName("input")[8].id ).checked = true;
-                document.getElementsByClassName("question-multiselect-checkbox-label")[0].form.submit();
-                moneyIn.play();
-            }, TASK_TIME * 1000);
-            break;
-
-        case 'http://app.spare5.com/fives/tasks/1135':                        //REVIEW
-            document.title = 'REVIEW ROAD MARKS';
-            alert("CONFIRMAR VALORES DOS INDICES");
-            setTimeout(function() {
-                if(ODD >= 90) document.getElementById( document.getElementsByTagName("input")[9].id ).checked = true;
-                else document.getElementById( document.getElementsByTagName("input")[8].id ).checked = true;
-                document.getElementsByClassName("question-multiselect-checkbox-label")[0].form.submit();
-                moneyIn.play();
-            }, TASK_TIME * 1000);
-            break;
-
-        case 'http://app.spare5.com/fives/tasks/1198':
-            document.title = 'CATEGORY REVIEW';
-            setTimeout(function() {
-                if(ODD >= 90) document.getElementById( document.getElementsByTagName("input")[9].id ).checked = true;
-                else document.getElementById( document.getElementsByTagName("input")[8].id ).checked = true;
-                document.getElementsByClassName("question-multiselect-checkbox-label")[0].form.submit();
-                moneyIn.play();
-            }, TASK_TIME * 1000);
-            break;
-
-        case 'http://app.spare5.com/fives/tasks/829':
-            document.title = 'SPORTS REVIEW';
-            setTimeout(function() {
-                if(ODD >= 50) document.getElementById( document.getElementsByTagName("input")[9].id ).checked = true;       //BASKET
-                else
-                    if(ODD >= 25) document.getElementById( document.getElementsByTagName("input")[16].id ).checked = true;  //SOCCER
-                    else document.getElementById( document.getElementsByTagName("input")[19].id ).checked = true;           //NOT A SPORT
-                document.getElementsByClassName("question-multiselect-checkbox-label")[0].form.submit();
-                moneyIn.play();
-            }, TASK_TIME * 1000);
-            break;
-
-        case 'http://app.spare5.com/fives/tasks/563':
-            document.title = 'MENTOR REVIEW';
-            break;
-
-        case 'http://app.spare5.com/fives/tasks/1183':
-            document.title = 'DESCRIBE IMAGE';
-            setTimeout(function() {
-                var temp = document.getElementById("job_answers_attributes_0_response").value; // = TEXTO A INTRODUZIR
-                document.getElementsByClassName("question-multiselect-checkbox-label")[0].form.submit();
-                moneyIn.play();
-            }, TASK_TIME * 1000);
-            break;
-
         case 'http://app.spare5.com/fives/tasks/328':                       //TESTE CASE
             document.title = 'TUTORIAL FASHION';
             alert("CONFIRMAR VALORES DOS INDICES");
@@ -124,7 +63,74 @@ jQuery.noConflict();
                         else document.getElementById( document.getElementsByTagName("input")[9].id ).checked = true;
                     else document.getElementById( document.getElementsByTagName("input")[8].id ).checked = true;
                 else document.getElementById( document.getElementsByTagName("input")[7].id ).checked = true;
+                sleep(500);
                 document.getElementsByClassName("question-multiselect-checkbox-label")[0].form.submit();
+            }, TASK_TIME * 1000);
+            break;
+
+        case 'http://app.spare5.com/fives/tasks/563':
+            document.title = 'MENTOR REVIEW';
+            break;
+
+        case 'http://app.spare5.com/fives/tasks/829':
+            document.title = 'SPORTS REVIEW';
+            setTimeout(function() {
+                if(ODD >= 50) document.getElementById( document.getElementsByTagName("input")[9].id ).checked = true;       //BASKET
+                else
+                    if(ODD >= 25) document.getElementById( document.getElementsByTagName("input")[16].id ).checked = true;  //SOCCER
+                    else document.getElementById( document.getElementsByTagName("input")[19].id ).checked = true;           //NOT A SPORT
+                sleep(500);
+                document.getElementsByClassName("question-multiselect-checkbox-label")[0].form.submit();
+                moneyIn.play();
+            }, TASK_TIME * 1000);
+            break;
+
+        case 'http://app.spare5.com/fives/tasks/1134':                         // CHANGEME
+            document.title = 'ROADMARKINGS';
+            alert("NOT SUPORTED YET");
+            break;
+
+        case 'http://app.spare5.com/fives/tasks/1135':                        //REVIEW
+            document.title = 'REVIEW ROAD MARKS';
+            alert("CONFIRMAR VALORES DOS INDICES");
+            setTimeout(function() {
+                if(ODD >= 90) document.getElementById( document.getElementsByTagName("input")[9].id ).checked = true;
+                else document.getElementById( document.getElementsByTagName("input")[8].id ).checked = true;
+                sleep(500);
+                document.getElementsByClassName("question-multiselect-checkbox-label")[0].form.submit();
+                moneyIn.play();
+            }, TASK_TIME * 1000);
+            break;
+
+        case 'http://app.spare5.com/fives/tasks/1169':                         //REVIEW
+            alert("CONFIRMAR VALORES DOS INDICES");
+            setTimeout(function() {
+                if(ODD >= 90) document.getElementById( document.getElementsByTagName("input")[9].id ).checked = true;
+                else document.getElementById( document.getElementsByTagName("input")[8].id ).checked = true;
+                sleep(500);
+                document.getElementsByClassName("question-multiselect-checkbox-label")[0].form.submit();
+                moneyIn.play();
+            }, TASK_TIME * 1000);
+            break;
+
+        case 'http://app.spare5.com/fives/tasks/1198':
+            document.title = 'CATEGORY REVIEW';
+            setTimeout(function() {
+                if(ODD >= 90) document.getElementById( document.getElementsByTagName("input")[9].id ).checked = true;
+                else document.getElementById( document.getElementsByTagName("input")[8].id ).checked = true;
+                sleep(500);
+                document.getElementsByClassName("question-multiselect-checkbox-label")[0].form.submit();
+                moneyIn.play();
+            }, TASK_TIME * 1000);
+            break;
+
+        case 'http://app.spare5.com/fives/tasks/1183':
+            document.title = 'DESCRIBE IMAGE';
+            setTimeout(function() {
+                var temp = document.getElementById("job_answers_attributes_0_response").value; // = TEXTO A INTRODUZIR
+                sleep(500);
+                document.getElementsByClassName("question-multiselect-checkbox-label")[0].form.submit();
+                moneyIn.play();
             }, TASK_TIME * 1000);
             break;
 
