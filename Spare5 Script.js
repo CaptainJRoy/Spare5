@@ -41,7 +41,6 @@ jQuery.noConflict();
     * document.getElementById("instruction-modal").style = "display: none;";
     * document.getElementsByClassName("modal-backdrop fade in")[0].style = "display: none;";
     */
-
     /*
     function prepareFrame() {
         var iframe = document.createElement("iframe");
@@ -52,10 +51,6 @@ jQuery.noConflict();
         document.body.appendChild(iframe);
     }
     */
-
-
-
-
 
     switch (location.href) {
         case 'http://app.spare5.com/fives/tasks/1134':                         // CHANGEME
@@ -113,22 +108,7 @@ jQuery.noConflict();
         case 'http://app.spare5.com/fives/tasks/1183':
             document.title = 'DESCRIBE IMAGE';
             setTimeout(function() {
-                var link = document.getElementsByTagName('a')[17].firstChild.currentSrc;
-                function prepareFrame(a) {
-                    var iframe = document.createElement("iframe");
-                    iframe.src="https://www.google.com/searchbyimage?site=search&sa=X&image_url=" + a + "&output=embed";
-                    iframe.width="100%";
-                    iframe.height="100%";
-                    iframe.style="visibility:visible";
-                    document.body.appendChild(iframe);
-                }
-                prepareFrame(link);
-
-                document.getElementsByClassName("gbqfb kpbb")[0].form.submit();
-                var toPost = document.getElementsByClassName("_gUb")[0].innerText;
-                window.history.back();
-
-                document.getElementById("job_answers_attributes_0_response").value = toPost;
+                document.getElementById("job_answers_attributes_0_response").value; // = TEXTO A INTRODUZIR
                 document.getElementsByClassName("question-multiselect-checkbox-label")[0].form.submit();
                 moneyIn.play();
             }, TASK_TIME * 1000);
@@ -152,13 +132,11 @@ jQuery.noConflict();
             // ABRE APENAS NA PAGINA DO GOOGLE IMAGES
             if(location.href.includes("search?tbs=sbi:")) {
                 setTimeout(function() {
-                    var toPost = document.getElementsByClassName("_gUb")[0].innerText;
-                    alert(toPost);
+                    document.getElementsByClassName("_gUb")[0].innerText; // TEXTO SOBRE IMAGEM
                     window.top.close();
                 }, TASK_TIME * 1000);
                 break;
             }
-
 
 
 
@@ -188,15 +166,6 @@ jQuery.noConflict();
                 $('head link[rel="icon"]').remove();
             }
 
-            function contains(a, obj) {
-                for (var i = 0; i < a.length; i++) {
-                    if (a[i].dataset.batchId == obj) {
-                        return i;
-                    }
-                }
-                return -1;
-            }
-
             function checkActiveTasks() {
                 // Even though the task items are loaded there is
                 // occasionally an additional delay needed
@@ -223,7 +192,9 @@ jQuery.noConflict();
                     faviconEl.attr('href', favicon)
                         .appendTo('head');
 
-                    if(activeTaskCount > 0) setTimeout(autoSelect, TASK_TIME * 1000);
+                    if(activeTaskCount > 0) setTimeout(function{
+                        autoSelect(document.getElementsByClassName("task-item active"));
+                    }, TASK_TIME * 1000);
 
                     setTimeout(function() {
                         location.reload();

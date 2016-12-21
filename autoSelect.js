@@ -1,5 +1,13 @@
-function autoSelect() {
-    var tasks = document.getElementsByClassName("task-item active");
+function contains(a, obj) {
+    for (var i = 0; i < a.length; i++) {
+        if (a[i].dataset.batchId == obj) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+function autoSelect(tasks) {
     var toDo;
     toDo = contains(tasks, 1198);             // CATEGORY REVIEW
     if(toDo != -1) {
