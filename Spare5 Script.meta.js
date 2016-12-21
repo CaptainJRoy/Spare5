@@ -21,7 +21,7 @@
 // @grant        none
 // @require      https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js
 // @require      https://raw.githubusercontent.com/CaptainJRoy/Spare5/master/waitForKeyElements.js?token=ALAj852QF4EbKa35hcu6ZAt4iimsomnGks5YX-WwwA%3D%3D
-// @require      https://raw.githubusercontent.com/CaptainJRoy/Spare5/master/autoSelect.js?token=ALAj813nouioyMKWXAttMBkNxdYpKcF2ks5YZBFHwA%3D%3D
+// @require      https://raw.githubusercontent.com/CaptainJRoy/Spare5/master/autoSelect.js?token=ALAj80MYgmNTYZXVbBWiLHYYlntXh3yUks5YZDj1wA%3D%3D
 // @require      https://cdn.firebase.com/js/client/2.4.2/firebase.js
 // @run-at       document-start
 // @updateURL    https://raw.githubusercontent.com/CaptainJRoy/Spare5/master/Spare5%20Script.meta.js?token=ALAj82no6gPF7qjrn1C7kKF8HwvNlqz0ks5YX-HewA%3D%3D
