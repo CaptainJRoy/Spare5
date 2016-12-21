@@ -21,6 +21,7 @@
 // @require      https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js
 // @require      https://raw.githubusercontent.com/CaptainJRoy/Spare5/master/waitForKeyElements.js?token=ALAj852QF4EbKa35hcu6ZAt4iimsomnGks5YX-WwwA%3D%3D
 // @require      https://raw.githubusercontent.com/CaptainJRoy/Spare5/master/autoSelect.js?token=ALAj813nouioyMKWXAttMBkNxdYpKcF2ks5YZBFHwA%3D%3D
+// @require      https://cdn.firebase.com/js/client/2.4.2/firebase.js
 // @run-at       document-start
 // @updateURL    https://raw.githubusercontent.com/CaptainJRoy/Spare5/master/Spare5%20Script.meta.js?token=ALAj82no6gPF7qjrn1C7kKF8HwvNlqz0ks5YX-HewA%3D%3D
 // @downloadURL  https://raw.githubusercontent.com/CaptainJRoy/Spare5/master/Spare5%20Script.js?token=ALAj82YYEpTQkuOwIiJ9bruUWApDmHerks5YX-HHwA%3D%3D
@@ -35,6 +36,19 @@ jQuery.noConflict();
     var ODD = Math.floor((Math.random() * 100) + 1);
     var moneyIn = new Audio('https://www.freesound.org/data/previews/75/75235_778044-lq.mp3');
     moneyIn.volume = 0.2;
+    var firebase = new Firebase('https://spare5-script.firebaseio.com');
+    var imgDesc;
+
+    firebase.on('value', gotData, errData);
+    function gotData(data) {
+        var info = data.val();
+        var keys = Object.keys(info);
+        imgDesc = info[keys[keys.length - 1]].description;
+    }
+    function errData(err) {
+        console.log("ERROR");
+        console.log(err);
+    }
 
     /**
     * PARA REMOVER AUTO DISPLAY BLOCK (MODAL BACKDROP), NAO E NECESSARIO
@@ -55,16 +69,11 @@ jQuery.noConflict();
     switch (location.href) {
         case 'http://app.spare5.com/fives/tasks/328':                       //TESTE CASE
             document.title = 'TUTORIAL FASHION';
-            alert("CONFIRMAR VALORES DOS INDICES");
             setTimeout(function() {
-                if(ODD >= 25)
-                    if(ODD >= 50)
-                        if(ODD >= 75) document.getElementById( document.getElementsByTagName("input")[10].id ).checked = true;
-                        else document.getElementById( document.getElementsByTagName("input")[9].id ).checked = true;
-                    else document.getElementById( document.getElementsByTagName("input")[8].id ).checked = true;
-                else document.getElementById( document.getElementsByTagName("input")[7].id ).checked = true;
-                sleep(500);
-                document.getElementsByClassName("question-multiselect-checkbox-label")[0].form.submit();
+                //window.open('https://www.google.com/searchbyimage?site=search&sa=X&image_url=' + document.getElementsByTagName('a')[17].firstChild.currentSrc);
+                sleep(TASK_TIME * 1000);
+                document.title = imgDesc;
+                //document.getElementsByClassName("question-multiselect-checkbox-label")[0].form.submit();
             }, TASK_TIME * 1000);
             break;
 
@@ -127,7 +136,7 @@ jQuery.noConflict();
         case 'http://app.spare5.com/fives/tasks/1183':
             document.title = 'DESCRIBE IMAGE';
             setTimeout(function() {
-                var temp = document.getElementById("job_answers_attributes_0_response").value; // = TEXTO A INTRODUZIR
+                var temp = document.getElementById("job_answers_attributes_0_response").value = imgDesc;
                 sleep(500);
                 document.getElementsByClassName("question-multiselect-checkbox-label")[0].form.submit();
                 moneyIn.play();
@@ -138,7 +147,9 @@ jQuery.noConflict();
             // ABRE APENAS NA PAGINA DO GOOGLE IMAGES
             if(location.href.includes("search?tbs=sbi:")) {
                 setTimeout(function() {
-                    var temp2 = document.getElementsByClassName("_gUb")[0].innerText; // TEXTO SOBRE IMAGEM
+                    var imageDescription = document.getElementsByClassName("_gUb")[0].innerText;
+                    var imageURL = document.getElementsByClassName("_u6")[0].baseURI;
+                    firebase.push({image:imageURL, description:imageDescription});
                     window.top.close();
                 }, TASK_TIME * 1000);
                 break;
