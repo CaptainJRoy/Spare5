@@ -16,6 +16,7 @@
 // @match        http://app.spare5.com/fives/tasks/1169
 // @match        http://app.spare5.com/fives/tasks/1183
 // @match        http://app.spare5.com/fives/tasks/1198
+// @match        http://app.spare5.com/fives/tasks/1204
 // @match        http://app.spare5.com/fives/tasks/1206
 // @grant        none
 // @require      https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js
@@ -122,6 +123,16 @@ jQuery.noConflict();
             }, TASK_TIME * 1000);
             break;
 
+        case 'http://app.spare5.com/fives/tasks/1183':
+            document.title = 'DESCRIBE IMAGE';
+            setTimeout(function() {
+                var temp = document.getElementById("job_answers_attributes_0_response").value = imgDesc;
+                sleep(500);
+                document.getElementsByClassName("question-multiselect-checkbox-label")[0].form.submit();
+                moneyIn.play();
+            }, TASK_TIME * 1000);
+            break;
+
         case 'http://app.spare5.com/fives/tasks/1198':
             document.title = 'CATEGORY REVIEW';
             setTimeout(function() {
@@ -133,10 +144,11 @@ jQuery.noConflict();
             }, TASK_TIME * 1000);
             break;
 
-        case 'http://app.spare5.com/fives/tasks/1183':
-            document.title = 'DESCRIBE IMAGE';
+        case 'http://app.spare5.com/fives/tasks/1204':
+            document.title = 'CREATE BOXES REVIEW';
             setTimeout(function() {
-                var temp = document.getElementById("job_answers_attributes_0_response").value = imgDesc;
+                if(ODD >= 90) document.getElementById( document.getElementsByTagName("input")[9].id ).checked = true;
+                else document.getElementById( document.getElementsByTagName("input")[8].id ).checked = true;
                 sleep(500);
                 document.getElementsByClassName("question-multiselect-checkbox-label")[0].form.submit();
                 moneyIn.play();

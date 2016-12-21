@@ -20,6 +20,12 @@ function autoSelect(tasks) {
         return;
     }
 
+    toDo = contains(tasks, 1204);             // FURNITURE REVIEW
+    if(toDo != -1) {
+        tasks[toDo].click();
+        return;
+    }
+
     toDo = contains(tasks, 1198);             // CATEGORY REVIEW
     if(toDo != -1) {
         tasks[toDo].click();
