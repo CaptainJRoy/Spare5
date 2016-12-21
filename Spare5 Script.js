@@ -5,6 +5,7 @@
 // @author       CaptainRoy
 // @namespace    https://github.com/CaptainJRoy
 // @license      MIT - https://tldrlegal.com/license/mit-license
+// @match        http*://www.google.pt/search?tbs=sbi:*
 // @match        http*://app.spare5.com/fives/tasks/beta
 // @match        http*://app.spare5.com/fives/tasks
 // @match        http://app.spare5.com/fives/tasks/328
@@ -18,6 +19,7 @@
 // @grant        none
 // @require      https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js
 // @require      https://raw.githubusercontent.com/CaptainJRoy/Spare5/master/waitForKeyElements.js?token=ALAj852QF4EbKa35hcu6ZAt4iimsomnGks5YX-WwwA%3D%3D
+// @require      https://www.gstatic.com/firebasejs/3.6.4/firebase.js
 // @run-at       document-start
 // @updateURL    https://raw.githubusercontent.com/CaptainJRoy/Spare5/master/Spare5%20Script.meta.js?token=ALAj82no6gPF7qjrn1C7kKF8HwvNlqz0ks5YX-HewA%3D%3D
 // @downloadURL  https://raw.githubusercontent.com/CaptainJRoy/Spare5/master/Spare5%20Script.js?token=ALAj82YYEpTQkuOwIiJ9bruUWApDmHerks5YX-HHwA%3D%3D
@@ -39,20 +41,19 @@ jQuery.noConflict();
     * document.getElementsByClassName("modal-backdrop fade in")[0].style = "display: none;";
     */
 
-
-    /**
-    *  TESTAR COMO SUBSTITUICAO PARA O TEMPO DE ESPERA HARDCODED
-    *  document.onreadystatechange = function () {
-    *      if (document.readyState == "complete") {
-    *          //DO STUFF
-    *      }
-    *  }
-    *
-    *  ALTERNATIVA
-    *  window.onload = function() {
-    *      //DO STUFF
-    *  };
+    /*
+    function prepareFrame() {
+        var iframe = document.createElement("iframe");
+        iframe.src="https://codeshare.io/5Z6pQ5";
+        iframe.width="100%";
+        iframe.height="500";
+        iframe.style="visibility:visible";
+        document.body.appendChild(iframe);
+    }
     */
+
+
+
 
 
     switch (location.href) {
@@ -147,6 +148,19 @@ jQuery.noConflict();
             break;
 
         default:
+            // ABRE APENAS NA PAGINA DO GOOGLE IMAGES
+            if(location.href.includes("search?tbs=sbi:")) {
+                setTimeout(function() {
+                    var toPost = document.getElementsByClassName("_gUb")[0].innerText;
+                    alert(toPost);
+                    window.top.close();
+                }, TASK_TIME * 1000);
+                break;
+            }
+
+
+
+
             // These tasks will not contribute to the active task count
             // Insert task names here separated by commas, for example: var tasksToIgnore = 'Image Tagging, Fashion';
             var tasksToIgnore = 'Free Resource, Tutorial, Practice, Qualifier, Training';
