@@ -15,13 +15,14 @@
 // @match        http://app.spare5.com/fives/tasks/1135
 // @match        http://app.spare5.com/fives/tasks/1169
 // @match        http://app.spare5.com/fives/tasks/1183
+// @match        http://app.spare5.com/fives/tasks/1195
 // @match        http://app.spare5.com/fives/tasks/1198
 // @match        http://app.spare5.com/fives/tasks/1204
 // @match        http://app.spare5.com/fives/tasks/1206
 // @grant        none
 // @require      https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js
 // @require      https://raw.githubusercontent.com/CaptainJRoy/Spare5/master/waitForKeyElements.js?token=ALAj852QF4EbKa35hcu6ZAt4iimsomnGks5YX-WwwA%3D%3D
-// @require      https://raw.githubusercontent.com/CaptainJRoy/Spare5/master/autoSelect.js?token=ALAj80MYgmNTYZXVbBWiLHYYlntXh3yUks5YZDj1wA%3D%3D
+// @require      https://raw.githubusercontent.com/CaptainJRoy/Spare5/master/autoSelect.js?token=ALAj821ZUKXVtfyVutWeyNrviGczR39qks5YZcXFwA%3D%3D
 // @require      https://cdn.firebase.com/js/client/2.4.2/firebase.js
 // @run-at       document-start
 // @updateURL    https://raw.githubusercontent.com/CaptainJRoy/Spare5/master/Spare5%20Script.meta.js?token=ALAj82no6gPF7qjrn1C7kKF8HwvNlqz0ks5YX-HewA%3D%3D
@@ -34,9 +35,10 @@ jQuery.noConflict();
 (function($) {
     'use strict';
     var TASK_TIME = 2;   //TIME IN SECONDS
+    var TASK_MID_BREAK = 9000;
     var ODD = Math.floor((Math.random() * 100) + 1);
     var moneyIn = new Audio('https://www.freesound.org/data/previews/75/75235_778044-lq.mp3');
-    moneyIn.volume = 0.2;
+    moneyIn.volume = 0.4;
     var firebase = new Firebase('https://spare5-script.firebaseio.com');
     var imgDesc;
 
@@ -71,10 +73,11 @@ jQuery.noConflict();
         case 'http://app.spare5.com/fives/tasks/328':                       //TESTE CASE
             document.title = 'TUTORIAL FASHION';
             setTimeout(function() {
-                //window.open('https://www.google.com/searchbyimage?site=search&sa=X&image_url=' + document.getElementsByTagName('a')[17].firstChild.currentSrc);
-                sleep(TASK_TIME * 1000);
+                window.open('https://www.google.com/searchbyimage?site=search&sa=X&image_url=' + document.getElementsByTagName('a')[17].firstChild.currentSrc);
+                setTimeout(function() {
                 document.title = imgDesc;
                 //document.getElementsByClassName("question-multiselect-checkbox-label")[0].form.submit();
+                }, TASK_MID_BREAK);
             }, TASK_TIME * 1000);
             break;
 
@@ -85,13 +88,17 @@ jQuery.noConflict();
         case 'http://app.spare5.com/fives/tasks/829':
             document.title = 'SPORTS REVIEW';
             setTimeout(function() {
-                if(ODD >= 50) document.getElementById( document.getElementsByTagName("input")[9].id ).checked = true;       //BASKET
+                setTimeout(function(){
+                    if(ODD >= 50) document.getElementsByClassName("question-multiselect-checkbox-label-wrapper")[1].children[0].click();       //BASKET
                 else
-                    if(ODD >= 25) document.getElementById( document.getElementsByTagName("input")[16].id ).checked = true;  //SOCCER
-                    else document.getElementById( document.getElementsByTagName("input")[19].id ).checked = true;           //NOT A SPORT
-                sleep(500);
-                document.getElementsByClassName("question-multiselect-checkbox-label")[0].form.submit();
-                moneyIn.play();
+                    if(ODD >= 25) document.getElementsByClassName("question-multiselect-checkbox-label-wrapper")[8].children[0].click();   //SOCCER
+                    else document.getElementsByClassName("question-multiselect-checkbox-label-wrapper")[11].children[0].click();           //NOT A SPORT
+                }, TASK_MID_BREAK / 2);
+                setTimeout(function(){
+                    document.getElementsByClassName("question-multiselect-checkbox-label")[0].form.submit();
+                    moneyIn.play();
+                }, TASK_MID_BREAK / 2);
+                setTimeout(function(){location.reload();}, TASK_MID_BREAK);
             }, TASK_TIME * 1000);
             break;
 
@@ -106,7 +113,6 @@ jQuery.noConflict();
             setTimeout(function() {
                 if(ODD >= 90) document.getElementById( document.getElementsByTagName("input")[9].id ).checked = true;
                 else document.getElementById( document.getElementsByTagName("input")[8].id ).checked = true;
-                sleep(500);
                 document.getElementsByClassName("question-multiselect-checkbox-label")[0].form.submit();
                 moneyIn.play();
             }, TASK_TIME * 1000);
@@ -117,7 +123,6 @@ jQuery.noConflict();
             setTimeout(function() {
                 if(ODD >= 90) document.getElementById( document.getElementsByTagName("input")[9].id ).checked = true;
                 else document.getElementById( document.getElementsByTagName("input")[8].id ).checked = true;
-                sleep(500);
                 document.getElementsByClassName("question-multiselect-checkbox-label")[0].form.submit();
                 moneyIn.play();
             }, TASK_TIME * 1000);
@@ -126,10 +131,46 @@ jQuery.noConflict();
         case 'http://app.spare5.com/fives/tasks/1183':
             document.title = 'DESCRIBE IMAGE';
             setTimeout(function() {
-                var temp = document.getElementById("job_answers_attributes_0_response").value = imgDesc;
-                sleep(500);
-                document.getElementsByClassName("question-multiselect-checkbox-label")[0].form.submit();
-                moneyIn.play();
+                setTimeout(function(){
+                    var temp = document.getElementById("job_answers_attributes_0_response").value = imgDesc;
+                }, TASK_MID_BREAK / 2);
+                setTimeout(function(){
+                    document.getElementsByClassName("question-multiselect-checkbox-label")[0].form.submit();
+                    moneyIn.play();
+                }, TASK_MID_BREAK / 2);
+                setTimeout(function(){location.reload();}, TASK_MID_BREAK);
+            }, TASK_TIME * 1000);
+            break;
+
+        case 'http://app.spare5.com/fives/tasks/1195':
+            document.title = 'CATEGORIZE HOTEL REVIEWS';
+            setTimeout(function() {
+                setTimeout(function(){
+                    if(ODD >= 75) {
+                        document.getElementsByClassName("question-multiselect-checkbox-label-wrapper")[0].children[0].click();   //AMENITIES
+                        document.getElementsByClassName("question-multiselect-checkbox-label-wrapper")[4].children[0].click();   //CLENLINESS
+                    }
+                    else {
+                        if(ODD >= 50) document.getElementsByClassName("question-multiselect-checkbox-label-wrapper")[3].children[0].click();   //BREAKFAST
+                        else {
+                            if(ODD >= 25) {
+                                document.getElementsByClassName("question-multiselect-checkbox-label-wrapper")[4].children[0].click();                //CLENLINESS
+                                document.getElementsByClassName("question-multiselect-checkbox-label-wrapper")[5].children[0].click();                //CONFORT
+                                document.getElementsByClassName("question-multiselect-checkbox-label-wrapper")[13].children[0].click();               //WIFI
+                            }
+                            else {
+                                document.getElementsByClassName("question-multiselect-checkbox-label-wrapper")[8].children[0].click();                //PRICE
+                                document.getElementsByClassName("question-multiselect-checkbox-label-wrapper")[10].children[0].click();               //ROOM
+                                document.getElementsByClassName("question-multiselect-checkbox-label-wrapper")[11].children[0].click();               //STAFF
+                            }
+                        }
+                    }
+                }, TASK_MID_BREAK / 2);
+                setTimeout(function(){
+                    document.getElementsByClassName("question-multiselect-checkbox-label")[0].form.submit();
+                    moneyIn.play();
+                }, TASK_MID_BREAK / 2);
+                setTimeout(function(){location.reload();}, TASK_MID_BREAK);
             }, TASK_TIME * 1000);
             break;
 
@@ -138,7 +179,6 @@ jQuery.noConflict();
             setTimeout(function() {
                 if(ODD >= 90) document.getElementById( document.getElementsByTagName("input")[9].id ).checked = true;
                 else document.getElementById( document.getElementsByTagName("input")[8].id ).checked = true;
-                sleep(500);
                 document.getElementsByClassName("question-multiselect-checkbox-label")[0].form.submit();
                 moneyIn.play();
             }, TASK_TIME * 1000);
@@ -147,11 +187,42 @@ jQuery.noConflict();
         case 'http://app.spare5.com/fives/tasks/1204':
             document.title = 'CREATE BOXES REVIEW';
             setTimeout(function() {
-                if(ODD >= 90) document.getElementById( document.getElementsByTagName("input")[9].id ).checked = true;
-                else document.getElementById( document.getElementsByTagName("input")[8].id ).checked = true;
-                sleep(500);
-                document.getElementsByClassName("question-multiselect-checkbox-label")[0].form.submit();
-                moneyIn.play();
+                if(ODD >= 90) document.getElementsByClassName("question-multiselect-checkbox-label-wrapper")[1].children[0].click();
+                else document.getElementsByClassName("question-multiselect-checkbox-label-wrapper")[0].children[0].click();
+                document.getElementsByTagName("input")[5].click();
+                document.getElementById("instruction-modal").style = "display: none;";
+                document.getElementsByClassName("modal-backdrop fade in")[0].style = "display: none;";
+                setTimeout(function() {
+                    if(ODD >= 90) document.getElementsByClassName("question-multiselect-checkbox-label-wrapper")[3].children[0].click();
+                    else document.getElementsByClassName("question-multiselect-checkbox-label-wrapper")[2].children[0].click();
+                    document.getElementsByTagName("input")[5].click();
+                    setTimeout(function() {
+                        document.getElementsByTagName("input")[5].click();
+                        moneyIn.play();
+                        location.reload();
+                    }, TASK_MID_BREAK);
+                }, TASK_MID_BREAK);
+            }, TASK_TIME * 1000);
+            break;
+
+        case 'http://app.spare5.com/fives/tasks/1206':
+            document.title = 'REVIEW FURNITURE ITEMS';
+            setTimeout(function() {
+                if(ODD >= 90) document.getElementsByClassName("question-multiselect-checkbox-label-wrapper")[1].children[0].click();
+                else document.getElementsByClassName("question-multiselect-checkbox-label-wrapper")[0].children[0].click();
+                document.getElementsByTagName("input")[5].click();
+                document.getElementById("instruction-modal").style = "display: none;";
+                document.getElementsByClassName("modal-backdrop fade in")[0].style = "display: none;";
+                setTimeout(function() {
+                    if(ODD >= 90) document.getElementsByClassName("question-multiselect-checkbox-label-wrapper")[3].children[0].click();
+                    else document.getElementsByClassName("question-multiselect-checkbox-label-wrapper")[2].children[0].click();
+                    document.getElementsByTagName("input")[5].click();
+                    setTimeout(function() {
+                        document.getElementsByTagName("input")[5].click();
+                        moneyIn.play();
+                        location.reload();
+                    }, TASK_MID_BREAK);
+                }, TASK_MID_BREAK);
             }, TASK_TIME * 1000);
             break;
 
@@ -163,7 +234,7 @@ jQuery.noConflict();
                     var imageURL = document.getElementsByClassName("_u6")[0].baseURI;
                     firebase.push({image:imageURL, description:imageDescription});
                     window.top.close();
-                }, TASK_TIME * 1000);
+                }, TASK_MID_BREAK / 2);
                 break;
             }
 
@@ -210,7 +281,7 @@ jQuery.noConflict();
                         // O ficheiro de som do freesound pode falhar (ver se funciona com videos do youtube)
                         //Cha Ching var sound = new Audio("https://www.freesound.org/data/previews/75/75235_778044-lq.mp3");
                         var sound = new Audio('https://dl-web.dropbox.com/get/money.mp3?_subject_uid=199747046&w=AAC7Hb1RS6RZ_Qmazp-JIqg93pQqDwrRbzv2bXEfrud99g&duc_id=dropbox_duc_id');
-                        sound.volume = 0.05;
+                        sound.volume = 0.10;
                         sound.play();
 
                         secondsToReload = secondsToReload * 2;
