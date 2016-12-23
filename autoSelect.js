@@ -14,37 +14,43 @@ function contains(a, obj) {
 
 function autoSelect(tasks) {
     var toDo;
-    toDo = contains(tasks, 1206);             // FURNITURE REVIEW
+    toDo = contains(tasks, 1206);             // Review furniture items
     if(toDo != -1) {
         tasks[toDo].click();
         return;
     }
 
-    toDo = contains(tasks, 1204);             // FURNITURE REVIEW
+    toDo = contains(tasks, 1204);             // Create boxes review
     if(toDo != -1) {
         tasks[toDo].click();
         return;
     }
 
-    toDo = contains(tasks, 1198);             // CATEGORY REVIEW
+    toDo = contains(tasks, 1198);             // Category review
     if(toDo != -1) {
         tasks[toDo].click();
         return;
     }
 
-    toDo = contains(tasks, 1135);             // REVIEW ROAD MARKS
+    toDo = contains(tasks, 1135);             // Review road marks
     if(toDo != -1) {
         tasks[toDo].click();
         return;
     }
 
-    toDo = contains(tasks, 829);              // SPORTS REVIEW
+    toDo = contains(tasks, 829);              // Sports review
     if(toDo != -1) {
         tasks[toDo].click();
         return;
     }
 
-    //toDo = contains(tasks, 1183);              // DESCRIBE IMAGE
+    toDo = contains(tasks, 1183);              // Describe image
+    if(toDo != -1) {
+        tasks[toDo].click();
+        return;
+    }
+
+    toDo = contains(tasks, 1195);              // Categorize hotel reviews
     if(toDo != -1) {
         tasks[toDo].click();
         return;
