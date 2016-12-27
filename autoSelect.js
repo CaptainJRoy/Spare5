@@ -14,6 +14,12 @@ function contains(a, obj) {
 
 function autoSelect(tasks) {
     var toDo;
+    toDo = contains(tasks, 1223);             // Confirm hotel review categories
+    if(toDo != -1) {
+        tasks[toDo].click();
+        return;
+    }
+
     toDo = contains(tasks, 1206);             // Review furniture items
     if(toDo != -1) {
         tasks[toDo].click();
@@ -51,6 +57,12 @@ function autoSelect(tasks) {
     }
 
     toDo = contains(tasks, 1195);              // Categorize hotel reviews
+    if(toDo != -1) {
+        tasks[toDo].click();
+        return;
+    }
+
+    toDo = contains(tasks, 1222);              // Categorize hotel reviews
     if(toDo != -1) {
         tasks[toDo].click();
         return;
