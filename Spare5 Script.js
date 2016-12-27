@@ -19,10 +19,12 @@
 // @match        http://app.spare5.com/fives/tasks/1198
 // @match        http://app.spare5.com/fives/tasks/1204
 // @match        http://app.spare5.com/fives/tasks/1206
+// @match        http://app.spare5.com/fives/tasks/1222
+// @match        http://app.spare5.com/fives/tasks/1223
 // @grant        none
 // @require      https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js
 // @require      https://raw.githubusercontent.com/CaptainJRoy/Spare5/master/waitForKeyElements.js?token=ALAj852QF4EbKa35hcu6ZAt4iimsomnGks5YX-WwwA%3D%3D
-// @require      https://raw.githubusercontent.com/CaptainJRoy/Spare5/master/autoSelect.js?token=ALAj821ZUKXVtfyVutWeyNrviGczR39qks5YZcXFwA%3D%3D
+// @require      https://raw.githubusercontent.com/CaptainJRoy/Spare5/master/autoSelect.js?token=ALAj88gf7eq9VpDc-dXL-0ts3AtprwmUks5YbCV7wA%3D%3D
 // @require      https://cdn.firebase.com/js/client/2.4.2/firebase.js
 // @run-at       document-start
 // @updateURL    https://raw.githubusercontent.com/CaptainJRoy/Spare5/master/Spare5%20Script.meta.js?token=ALAj82no6gPF7qjrn1C7kKF8HwvNlqz0ks5YX-HewA%3D%3D
@@ -143,6 +145,7 @@ jQuery.noConflict();
             break;
 
         case 'http://app.spare5.com/fives/tasks/1195':
+        case 'http://app.spare5.com/fives/tasks/1222':
             document.title = 'CATEGORIZE HOTEL REVIEWS';
             setTimeout(function() {
                 setTimeout(function(){
@@ -222,6 +225,19 @@ jQuery.noConflict();
                         moneyIn.play();
                         location.reload();
                     }, TASK_MID_BREAK);
+                }, TASK_MID_BREAK);
+            }, TASK_TIME * 1000);
+            break;
+
+        case 'http://app.spare5.com/fives/tasks/1223':
+            document.title = 'CONFIRM HOTEL REVIEW CATEGORIES';
+            setTimeout(function() {
+                if(ODD >= 30) document.getElementsByClassName("question-multiselect-checkbox-label-wrapper")[0].children[0].click();
+                else document.getElementsByClassName("question-multiselect-checkbox-label-wrapper")[1].children[0].click();
+                setTimeout(function() {
+                    document.getElementsByTagName("input")[4].click();
+                    moneyIn.play();
+                    location.reload();
                 }, TASK_MID_BREAK);
             }, TASK_TIME * 1000);
             break;
