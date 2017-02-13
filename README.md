@@ -5,4 +5,9 @@ So this is a script i made for the website Spare5. It automaticcaly select and c
 I believe that now the use of scripts is prohibited, so do it at your own risk.
 
 Cheers
-- CaptainRoy
+-CaptainRoy
+
+<br>
+<strong>ScreenShot</strong>
+<br>
+<img src="https://raw.githubusercontent.com/CaptainJRoy/Traveling-Salesperson/master/Screenshot_1.png" data-canonical-src="https://raw.githubusercontent.com/CaptainJRoy/Traveling-Salesperson/master/Screenshot_1.png" width="800" height="600" />
