@@ -5,6 +5,7 @@ So this is a script i made for the website Spare5. It automaticcaly select and c
 I believe that now the use of scripts is prohibited, so do it at your own risk.
 
 Cheers
+<br>
 -CaptainRoy
 
 <br>
