@@ -235,11 +235,11 @@ jQuery.noConflict();
                 if(ODD >= 30) document.getElementsByClassName("question-multiselect-checkbox-label-wrapper")[0].children[0].click();
                 else document.getElementsByClassName("question-multiselect-checkbox-label-wrapper")[1].children[0].click();
                 setTimeout(function() {
-                    document.getElementsByTagName("input")[4].click();
+                    document.getElementsByClassName("btn btn-primary")[0].click();
                     moneyIn.play();
                     location.reload();
-                }, TASK_MID_BREAK);
-            }, TASK_TIME * 1000);
+                }, TASK_TIME * 1000);
+            }, TASK_MID_BREAK);
             break;
 
         default:
